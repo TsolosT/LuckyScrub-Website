@@ -70,18 +70,6 @@ body {
     color: var(--text-color);
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* Footer */
 footer {
     display: flex;
@@ -138,7 +126,7 @@ footer > p {
     color: var(--text-color);
 }
 
-/* Button (Bootstrap-like styling) */
+/* Button */
 .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -151,6 +139,7 @@ footer > p {
     transition: all 0.3s ease;
 }
 
+
 .btn-primary {
     background-color: var(--primary-color);
     color: var(--secondary-color);
@@ -158,25 +147,134 @@ footer > p {
 }
 
 .btn-primary:hover {
+    cursor: pointer;
     background-color: var(--secondary-color);
     color: var(--primary-color);
     border-color: var(--primary-color);
     transform: scale(1.05);
 }
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+.btn-outline:hover {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+/* general */
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    padding: 50px;
+    background-color: var(--background-color);
+    gap: 10px;
+}
+
+.container-sub {
+    max-width:30%;
+}
+
+.container-sub figure {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    overflow: hidden;
+    border-start-start-radius: inherit;
+    border-start-end-radius: inherit;
+    border-end-start-radius: unset;
+    border-end-end-radius: unset;
+    margin: 0;
+}
+.container-sub figure img {
+    width:542px;
+}
+.img {
+    max-width: 100%;
+    height: auto;
+} 
+.img-rounded{
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.text-subtext {
+    font-size: small;
+    font-family: var(--font-header);
+    color:var(--accent-color);
+}
+.text-header {
+    font-size: 24px;
+    font-family: var(--font-header);
+    font-style: italic;
+    color:var(--primary-color);
+    margin: 20px 0;
+}
+.text-body {
+    font-family: var(--font-body);
+    color:var(--text-color);
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+} 
+.mt-2 {
+    margin-top:2em!important;
+}
 
 /* Services Section */
 .services {
-    text-align: center;
-    padding: 50px;
-    background: var(--background-color);
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
 }
-
+.services h1.text-header {
+    font-size: 2rem;
+}
+/* Service Cards */
 .service-cards {
     display: flex;
+    flex-direction: row;
     gap: 20px;
     justify-content: center;
+    flex-wrap: wrap; /* This allows the cards to wrap when the screen size is small */
+    width: 100%;
 }
 
+.service-card {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    flex-direction: column;
+    width: 320px;
+    gap: 15px; 
+    padding: 10px;
+    background-color: var(--accent-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(30px); /* Move the card down initially */
+    transition: opacity 0.6s ease 1s, transform 0.6s ease 1s; /* Fade and slide-up transition */
+    position: relative;
+}
+.service-card h3 {
+    font-size: 20px;
+    font-family: var(--font-header);
+    color: var(--text-color);
+    margin: 0; 
+} 
+.service-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.service-card.visible {
+    opacity: 1;
+    transform: translateY(0); /* Move to original position */
+}
 /* Popular Plants */
 .plant-cards {
     display: flex;
@@ -249,4 +347,61 @@ footer > p {
         font-size: 14px;
         padding: 8px 16px;
     }
+    .container {
+        flex-direction: column; /* Stack the items vertically on mobile */
+        align-items: center;
+    }
+
+    .container-sub {
+        max-width: 100%; /* Make the container take full width */
+        margin-bottom: 20px;
+    }
+
+    .container-sub figure img {
+        width: 100%; /* Make image responsive */
+    }
+
+    .text-header {
+        font-size: 20px; /* Adjust text size for mobile */
+    }
+
+    .text-body {
+        font-size: 14px; /* Adjust text size for mobile */
+    }
+
+    .services, .service-cards {
+        flex-direction: column; /* Stack cards vertically */
+        align-items: center;
+    }
+    
+    .service-card {
+        width: 100%; /* Make each card take full width on smaller screens */
+    }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Fade-up Animation */
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Start from below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End in original position */
+    }
+}
+.fade-up {
+    opacity: 0;
+    animation: fadeUp 1.5s ease-out forwards 0.5s; /* The fade-up animation */
 }
