@@ -166,6 +166,10 @@ footer > p {
     transform: scale(1.05);
 }
 /* general */
+.bg-linear {
+    background: rgb(244,241,230);
+background: linear-gradient(180deg, rgba(244, 241, 230, 1) 0%, rgba(184, 216, 201, 1) 61%, rgba(38, 135, 127, 1) 100%);
+}
 .container {
     display: flex;
     justify-content: space-evenly;
