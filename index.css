@@ -1,0 +1,131 @@
+/* Variables */
+:root {
+    --primary-color: #26877F;
+    --secondary-color: #FEF4F2;
+    --hover-color: #44a897;
+    --text-color: #333333;
+    --accent-color: #F1AA81;
+    --background-color: #F4F1E6;
+    --font-header: 'Playfair Display', serif;
+    --font-body: 'Roboto', sans-serif;
+    --fade-duration: 1.2s;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 100px;
+    background: var(--background-color);
+    opacity: 0;
+    animation: fadeIn var(--fade-duration) ease-in-out forwards;
+}
+
+.logo {
+    flex: 1;
+}
+
+.navbar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.navbar-item {
+    color: var(--text-color);
+    text-decoration: none;
+    font-family: var(--font-header);
+    font-size: 16px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect */
+.navbar-item:hover {
+    color: var(--hover-color);
+    transform: scale(1.1);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Footer */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--accent-color);
+    align-content: center;
+    flex-wrap: wrap;
+}
+footer > svg {
+    margin-right: 30px;
+}
+footer > p {
+    color: var(--secondary-color);
+}
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px;
+    background: var(--secondary-color);
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero-content h1 {
+    font-family: var(--font-header);
+    font-size: 48px;
+    color: var(--text-color);
+}
+
+.hero-content .highlight {
+    color: var(--primary-color);
+}
+
+/* Services Section */
+.services {
+    text-align: center;
+    padding: 50px;
+    background: var(--background-color);
+}
+
+.service-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Popular Plants */
+.plant-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Contact */
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
