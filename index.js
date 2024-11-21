@@ -41,3 +41,17 @@ window.addEventListener('scroll', function() {
     });
 });
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const carouselContainer = document.querySelector('.carousel__container');
+    const firstItem = carouselContainer.querySelector('.carousel-item');
+
+    // Center the first item on page load
+    if (firstItem) {
+        const offset = firstItem.offsetLeft - carouselContainer.clientWidth / 2 + firstItem.clientWidth / 2;
+        carouselContainer.scrollTo({
+            left: offset,
+            behavior: 'smooth',
+        });
+    }
+});

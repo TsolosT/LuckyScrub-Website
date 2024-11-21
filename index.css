@@ -21,6 +21,7 @@
 }
 body {
     scroll-behavior: smooth; 
+    background-color: var(--background-color);
 }
 
 /* Header */
@@ -228,7 +229,9 @@ background: linear-gradient(180deg, rgba(244, 241, 230, 1) 0%, rgba(184, 216, 20
 .mt-2 {
     margin-top:2em!important;
 }
-
+.text-center {
+    align-content: center;
+}
 /* Services Section */
 .services {
     display: flex;
@@ -280,12 +283,101 @@ background: linear-gradient(180deg, rgba(244, 241, 230, 1) 0%, rgba(184, 216, 20
     transform: translateY(0); /* Move to original position */
 }
 /* Popular Plants */
-.plant-cards {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
-
+.carousel {
+    width: 100%;
+    overflow-x: scroll;
+    padding: 30px;
+    padding-top: 80px;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  .carousel__container {
+    white-space: nowrap;
+    margin: 70px 0px;
+    padding-bottom: 10px;
+    display: inline-block;
+  }
+  .carousel-item {
+    width: 200px;
+    height: 250px;
+    border-radius: 20px;
+    background-color: #95bcd6;
+    overflow: hidden;
+    margin-right: 10px;
+    margin-top: 70px;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-transition: 1000ms all;
+    transition: 1000ms all;
+    -webkit-transform-origin: center left;
+    transform-origin: center left;
+    position: relative;
+  }
+  
+  .carousel-item:hover ~ .carousel-item {
+    -webkit-transform: translate3d(100px, 0, 0);
+    transform: translate3d(100px, 0, 0);
+  }
+  
+  .carousel__container:hover .carousel-item {
+    opacity: 0.3;
+  }
+  
+  .carousel__container:hover .carousel-item:hover {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    opacity: 1;
+  }
+  
+  .carousel-item__img {
+    width: 200px;
+    height: 250px;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+  
+  .carousel-item__details {
+    background: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      from(rgba(0, 0, 0, 0.9)),
+      to(rgba(0, 0, 0, 0))
+    );
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    font-size: 10px;
+    opacity: 0;
+    -webkit-transition: 450ms opacity;
+    transition: 450ms opacity;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .carousel-item__details:hover {
+    opacity: 1;
+  }
+  
+  
+  .carousel-item__details .controls {
+    padding-top: 180px;
+  }
+  
+  .carousel-item__details .carousel-item__details--title,
+  .carousel-item__details--subtitle {
+    color: var(--background-color);
+    margin: 5px 0;
+  }
+  
 /* Contact */
 .contact form {
     display: flex;
@@ -366,22 +458,161 @@ background: linear-gradient(180deg, rgba(244, 241, 230, 1) 0%, rgba(184, 216, 20
     }
 
     .text-header {
-        font-size: 20px; /* Adjust text size for mobile */
+        font-size: 20px;
+        margin-bottom: 10px;
     }
 
     .text-body {
-        font-size: 14px; /* Adjust text size for mobile */
+        font-size: 14px;
     }
 
     .services, .service-cards {
-        flex-direction: column; /* Stack cards vertically */
+        flex-direction: column; 
         align-items: center;
     }
     
     .service-card {
-        width: 100%; /* Make each card take full width on smaller screens */
+        width: 100%; 
+    }
+    .carousel__container {
+        overflow-x: scroll;
+        scrollbar-width: none; 
+        -ms-overflow-style: none; /
+    }
+
+    .carousel__container::-webkit-scrollbar {
+        display: none; 
+    }
+
+    .carousel-item {
+        width: 200px;
+        height: 250px;
+    }
+
+    .carousel-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .carousel__container {
+        display: flex; 
+        gap: 10px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory; 
+        padding-left: 50%; 
+        padding-right: 50%; 
+        -webkit-overflow-scrolling: touch; 
+    }
+
+    .carousel-item {
+        flex: 0 0 auto;
+        scroll-snap-align: center; 
+    }
+
+    /* Reduce spacing for compact view */
+    .carousel-item:nth-child(1) {
+        margin-left: 36%;
+    }
+    .contact {
+        padding: 40px 10px;
+    }
+
+    .svg-top-right, .svg-bottom-left {
+        width: 100px; /* Smaller SVGs on mobile */
+    }
+
+    .contact h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact form {
+        width: 100%; /* Full width on smaller screens */
     }
 }
+.contact {
+    position: relative; /* For SVG placement */
+    padding: 60px 20px; /* Add spacing */
+    background-color: var(--background-color);
+    text-align: center;
+}
+
+/* SVG Placement */
+.svg-top-right, .svg-bottom-left {
+    position: absolute;
+    z-index: -1; /* Push behind content */
+}
+
+.svg-top-right {
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: auto;
+    opacity: 0.2; /* Subtle look */
+}
+
+.svg-bottom-left {
+    bottom: 0;
+    left: 0;
+    width: 150px;
+    height: auto;
+    opacity: 0.2; /* Subtle look */
+}
+
+/* Contact Form */
+.contact h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.contact form {
+    max-width: 500px;
+    margin: 0 auto; /* Center the form */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact form input,
+.contact form textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.contact form textarea {
+    height: 100px;
+    resize: none;
+}
+
+.contact form label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+.contact form label input {
+    padding: 10px 0px;
+    width: 30px;
+}
+.contact form button {
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.contact form button:hover {
+    background-color: var(--accent-color);
+}
+
 
 /* Fade-in animation */
 @keyframes fadeIn {
